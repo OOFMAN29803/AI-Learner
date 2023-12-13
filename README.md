@@ -19,7 +19,7 @@ This is a Machine learning tyoe of AI where you train the model and then it lear
 ## Usage
 
 This AI is in the alpha stage, primarily intended for testing and personal use. Follow these steps to train and use the AI: 
-Open up aitrain.py, follow the prompts and then once you have all the prompts (case sensitive for now) you can talk to the AI.
+Open up `aitrain.py`, follow the prompts and then once you have all the prompts (case sensitive for now) you can talk to the AI.
 
 ---
 
