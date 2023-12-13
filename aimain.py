@@ -1,11 +1,13 @@
 import re
 
-def sanitize_filename(filename):
+for i in range(200):
 
-    sanitized_filename = re.sub(r'[<>:"/\\|?*]', '', filename)
-    return sanitized_filename
+    def sanitize_filename(filename):
 
-prompt = input("Answer from the bot: ")
+        sanitized_filename = re.sub(r'[<>:"/\\|?*.]', '', filename)
+        return sanitized_filename
+
+prompt = input("Answer from the bot: ").lower()
 
 sanitized_prompt = sanitize_filename(prompt)
 
