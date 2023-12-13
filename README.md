@@ -1,7 +1,7 @@
 # SilicoLM Learner
 
 ## Overview
-This is a Machine learning tyoe of AI where you train the model and then it learns off what you say. At this point in time it is in Alpha stages, the model that you can train is called SilicoLM 
+This is a Machine learning AI where you train the model with text and then it learns off what you say. At this point in time it is in Alpha stages, the model that you can train is called SilicoLM 
 
 ## Table of Contents
 
