@@ -13,8 +13,9 @@ This is a Machine learning AI where you train the model with text and then it le
 
 1. Download the project files and ensure they are all in the same directory.
 2. Have a Python IDE installed for code modification and a compiler for running the code.
-3. Train the AI using your prompts (case-sensitive).
-4. Utilize `aimain.py` to interact with the trained AI.
+3.YOU NEED `os` and you NEED `gtts` (install gtts by: `pip install gtts` in *Powershell*)
+4. Train the AI using your prompts (case-sensitive).
+5. Utilize `aimain.py` to interact with the trained AI.
 
 ## Usage
 
