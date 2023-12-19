@@ -2,43 +2,44 @@ import re
 import tkinter as tk
 from re import search
 import os
-from gtts import gTTS
+import speech_recognition as sr
 
+recognizer = sr.Recognizer()
+source = sr.Microphone()
 
-def sanitize_filename(filename):
+def sanitize_filename():
   filename = filename[:255]
   sanitized_filename = re.sub(r'[<>:"/\\|?*!@#$%^&().,]', '', filename)
   return sanitized_filename
 def read_file():
+    text = ""
+    updated_content = ""
     try:
-        prompt = entry.get().lower()
-        prompt = prompt[:255]
-        sanitized_prompt = sanitize_filename(prompt)
-        soundcorrect = f"{sanitized_prompt}.mp3"
+        audio_data = recognizer.listen(source)
+        text = recognizer.recognize_google(audio_data)
+        sanitized_prompt = sanitize_filename(text)
         with open(sanitized_prompt + ".txt", 'r') as file:
             updated_content = file.read()
             updated_content = updated_content[:255]
     except FileNotFoundError:
-        error = "SilicoLM: I am sorry I do not understand, You may not have trained the AI to understand  >" + "'" + prompt + "'" + "<, try again once you have trained it."
-        listbox.insert(tk.END, "You: " + prompt)
+        error = "SilicoLM: I am sorry I do not understand, You may not have trained the AI to understand  >" + "'" + text + "'" + "<, try again once you have trained it."
         listbox.insert(tk.END, "     ")
         listbox.insert(tk.END, error)
         listbox.insert(tk.END, "     ")
     except Exception as e:
         error = "An Error Occurred, if this continues, post an issue in Github on the Issues page"
-        listbox.insert(tk.END, "You: " + prompt)
         listbox.insert(tk.END, "     ")
         listbox.insert(tk.END, error)
-        listbox.insert(tk.END, "     ")
+        listbox.insert(tk.END, "     ")     
     finally:
         print("Successful Prompt with 0 known errors")
-        listbox.insert(tk.END, "You: " + prompt)
+        listbox.insert(tk.END, "You: " + text)
+        listbox.insert(tk.END, "     ")          
+        listbox.insert(tk.END, "SilicoLM: " + updated_content)
         listbox.insert(tk.END, "     ")
-        listbox.insert(tk.END,"SilicoLM: " + updated_content)
-        os.system("start " + soundcorrect)
-        listbox.insert(tk.END, "     ")
+        listbox.delete(0, tk.END)
+        entry.insert(tk.END, text)
 
-        
 
 def trainingopen():
   file_path = "aitrain.py"
